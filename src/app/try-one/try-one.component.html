@@ -1,0 +1,12 @@
+<h2>Try One</h2>
+
+<ng-template ngFor [ngForOf]="items" let-item let-i="index">
+    <div>
+        <input #input 
+        type="number" 
+        [value]="item" 
+        (change)="onChange(i,input.valueAsNumber)">
+    </div>
+</ng-template>
+
+<output>{{ items.join(',') }}</output>

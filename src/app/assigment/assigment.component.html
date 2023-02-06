@@ -1,0 +1,26 @@
+<h2>Assigment</h2>
+
+<button class="button-section" type="button" (click)="addsection()">Section</button>
+
+<section *ngFor="let section of sections; let i = index">
+    <h3>
+        <button class="add-section" type="button" (click)="add(section)" ><span class="material-icons">
+            add
+            </span></button>
+        Section {{i+1}}
+        <button class="del-section" type="button" (click)="deletesection(i)" [disabled]="sections.length ===1"> <span class="material-icons">
+            delete 
+            </span></button>
+    </h3>
+        <div class="input">
+            <div *ngFor="let input of section; let j = index" class="number">
+                <label for="input-{{i}}-{{j}}" class="data" >Input {{j + i}} </label>
+                <input #elem 
+                    type="number" 
+                    [value]="input.value" 
+                    (change)="onChange(section,j,elem.valueAsNumber)">
+                <button type="button" (click)="delete(section,j)" [disabled]="section.length ===1">X</button>
+            </div>
+        </div>
+        <output> {{getResult(section)}}</output>
+</section>
